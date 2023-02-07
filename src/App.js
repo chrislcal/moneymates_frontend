@@ -8,7 +8,7 @@ import Navbar from './components/Nav.js'
 function App() {
   return (
     <div className="App">
-      <h1>MoneyMates</h1>
+      <h1 className="app-name">MoneyMates</h1>
       <Navbar/>
     </div>
   );

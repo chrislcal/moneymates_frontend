@@ -18,4 +18,15 @@
   color: #61dafb;
 }
 
+.app-name {
+  color: #841AA9;
+  font-size: 50px;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.navbar {
+  margin: 10px auto 10px auto;
+}
+
 
