@@ -2,24 +2,14 @@
 
 const Navbar = () => {
     return (
-        <div class="navbar">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Goals</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Recurrent Payments</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Expence Categories</button>
-                </li>
+        <nav>
+            <ul>
+                <li class="item"><a href="#">Overview</a></li>
+                <li class="item"><a href="#">Goals</a></li>
+                <li class="item"><a href="#">Recurring</a></li>
+                <li class="item"><a href="#">Categories</a></li>
             </ul>
-            {/* <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
-            </div> */}
-        </div>
+        </nav>
     );
 }
 
