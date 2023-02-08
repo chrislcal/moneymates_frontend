@@ -1,0 +1,38 @@
+#institutionSelectHeader {
+    position: relative;
+    color: rgb(71, 17, 91);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 25px;
+    margin: 20px 0px 10px 10px;
+    padding-bottom: 20px;
+    width: 220px;
+}
+
+.bankItemContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+    width: 400px;
+    height: 100px;
+    margin: 10px 0px 0px 10px;
+    border: 2px solid rgb(201, 200, 200);
+    border-radius: 10px;
+
+    &:hover {
+        background-color: rgb(211, 210, 211);
+    }
+
+    .bankLogo {
+        position: relative;
+        margin: 0px 15px;
+        width: 100px;
+    }
+
+    .institutionLabel {
+        width: 300px;
+        margin: 0px 60px 0px 10px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 18px;
+    }
+}
