@@ -2,10 +2,12 @@
 import './App.css';
 import './styles/nav.css';
 import './styles/categoryCard.css';
+import './styles/home.css';
 
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Nav.js';
 import CategoryCard from './components/CategoryCard.js';
+import Home from './components/Home.js'
 
 
 
@@ -18,6 +20,7 @@ function App() {
         <Navbar/>
       </header>
       <CategoryCard />
+      <Home />
     </div>
   );
 }
