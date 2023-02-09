@@ -1,7 +1,5 @@
 import { useLocation } from "react-router-dom";
 
-
-
 const GoalsDisplay = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);

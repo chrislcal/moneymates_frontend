@@ -1,29 +1,24 @@
-
-import './App.css';
-import './styles/nav.css';
-import './styles/categoryCard.css';
-import './styles/home.css';
-
-import React, { useState, useEffect } from 'react';
-import Navbar from './components/Nav.js';
-import CategoryCard from './components/CategoryCard.js';
-import Home from './components/Home.js'
-
-
-
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import CreateGoals from "./components/CreateGoals";
+import GoalsDisplay from "./components/GoalsDisplay";
+import progressbar from "./components/ProgressBar";
 
 function App() {
   return (
-    <div className="App">
-      <header>
-        <h1 className="app-name">MoneyMates</h1>
-        <Navbar/>
-      </header>
-      <CategoryCard />
-      <Home />
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/CreateGoals" component={CreateGoals} />
+        <Route exact path="/GoalsDisplay" component={GoalsDisplay} />
+        <Route exact path="/ProgressBar" component={progressbar} />'
+      </Switch>
+    </Router>
   );
 }
 
 export default App;
+
+
+
+
 

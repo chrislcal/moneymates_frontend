@@ -1,46 +1,41 @@
-const ProgressBar = (props) => {
-    const { bgcolor, completed } = props;
+import React from "react";
+import { CircularProgressbar } from "react-circular-progressbar";
 
-    const containerStyles = {
-        height: 20,
-        width: '100%',
-        borderBottomRightRadius: 0,
-        borderBottomLeftRadius: 0,
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
-        position: 'absolute',
-        width: '100%',
-        height: 47,
-        top: 1,
-        backgroundColor: '#E0E0E2',
-    }
+// import "react-circular-progressbar/dist/styles.css";
 
-    const fillerStyles = {
-        height: '100%',
-        width: `${completed}%`,
-        backgroundColor: bgcolor,
-        borderBottomRightRadius: 20,
-        borderBottomLeftRadius: 0,
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
-        textAlign: 'right',
-        transition: 'width 1s ease-in-out'
-    }
+const progressbar = () => {
+  const user1_balances = {
+    balances: [
+      {
+        balanceAmount: {
+          amount: "9539,50",
+          currency: "NOK",
+        },
+        balanceType: "interimAvailable",
+      },
+      {
+        balanceAmount: {
+          amount: "10538,30",
+          currency: "NOK",
+        },
+        balanceType: "interimBooked",
+      },
+    ],
+  };
 
-    const labelStyles = {
-        padding: 5,
-        color: 'white',
-        fontWeight: 'bold',
-        float: 'left'
-    }
+  const { amount } = user1_balances.balances[0].balanceAmount;
+  const balance = parseFloat(amount.replace(",", "."));
+  const totalAmount = 20000;
+  const percentage = (balance / totalAmount) * 100;
 
-    return (
-        <div style={containerStyles}>
-            <div style={fillerStyles}>
-                <span style={labelStyles}>{`${completed}%`}</span>
-            </div>
-        </div>
-    );
+  return (
+    <div style={{ width: 200, height: 200 }}>
+      <CircularProgressbar
+        value={percentage}
+        text={`${percentage.toFixed(0)}%`}
+      />
+    </div>
+  );
 };
 
-export default ProgressBar;
+export default progressbar;
