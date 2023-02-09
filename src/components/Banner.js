@@ -1,9 +1,11 @@
+import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import LoginButton from "./LoginButton";
+import { useAuth0 } from '@auth0/auth0-react';
 
 export const Banner = () => {
   // state to keep track of the current loop number of the text rotation animation
@@ -18,6 +20,11 @@ export const Banner = () => {
   const toRotate = [ "Transparent", "Simplicity", "Efficient" ];
   // period of rotation
   const period = 2000;
+
+  const history = useHistory();
+
+  // Set bankToken
+  const [bankToken, setBankToken] = useState(null);
 
   // setup an interval that calls the tick function at a frequency determined by the delta state variable
   useEffect(() => {
@@ -52,10 +59,43 @@ export const Banner = () => {
     }
   }
 
+  const {user, getAccessTokenSilently} = useAuth0();
+  
+
+  useEffect(() => {
+    async function main() {
+      const request = await fetch('http://localhost:3001/check-token-status', {
+        method: 'GET',
+        headers: {
+          "token": await getAccessTokenSilently()
+        }
+      });
+
+      // Banktoken status
+      const { status } = await request.json();
+
+      if(user && !status) {
+        history.push('/get-token');
+      }
+    }
+      
+    main();
+  }, [user])
+
   return (
     <section className="banner" id="home">
       <Container>
-        <Row className="aligh-items-center">
+        {user? 
+
+
+        (<div>
+          <p>success</p>
+        </div>):
+        
+        
+        
+        
+        (<Row className="aligh-items-center">
           <Col xs={12} md={6} xl={7}>
             <TrackVisibility>
               {({ isVisible }) =>
@@ -73,7 +113,8 @@ export const Banner = () => {
                 </div>}
             </TrackVisibility>
           </Col>
-        </Row>
+        </Row>)}
+        
       </Container>
     </section>
   )

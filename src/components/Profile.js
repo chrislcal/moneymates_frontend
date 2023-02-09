@@ -21,10 +21,18 @@ const Profile = () => {
           }
         );
   
-        await axios.post('http://localhost:3001/save-user-data', {
-          user_id: user_id,
-          email: userData.email,
-          nickname: userData.nickname
+        await axios({
+          url: 'http://localhost:3001/save-user-data',
+          method: 'POST',
+          data: {
+            user_id: user_id,
+            email: userData.email,
+            nickname: userData.nickname
+          },
+          headers: {
+            token: accessToken
+          }
+          
         });
       } catch (error) {
         console.error(error);
@@ -39,3 +47,4 @@ const Profile = () => {
 };
 
 export default Profile;
+

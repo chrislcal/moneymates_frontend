@@ -1,31 +1,57 @@
+import "../../styles/styles.css";
+import axios from 'axios';
+import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import "../../styles/styles.css";
 
 const Loading = () => {
   const history = useHistory();
-  const [agreement, setAgreement] = useState(null);
   const [requisition, setRequisition] = useState(null);
+  const [agreement, setAgreement ] = useState(null)
+  const { getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
-    const fetchAgreement = async () => {
-      const request = await fetch("http://localhost:3000/save-agreement-id");
-      const response = await request.json();
-      setAgreement(response);
-    };
 
-    fetchAgreement();
-  }, []);
 
-  useEffect(() => {
-    if (agreement) {
-      const fetchRequisition = async () => {
-        const request = await fetch("http://localhost:3000/save-requisition-id");
+    const handleData = async() => {
+      try{
+
+        const accessToken = await getAccessTokenSilently();
+        const request = await fetch("http://localhost:3001/save-agreement-id", {
+          method: 'GET',
+          headers: {
+          "token": await getAccessTokenSilently()
+        }
+        });
         const response = await request.json();
-        setRequisition(response.link);
-      };
+        setAgreement(response)
 
-      fetchRequisition();
+      } catch(error) {
+        console.log(error);
+      }
+    }
+    handleData();
+  }, []);
+  
+
+  useEffect(() => {
+    try {
+      if (agreement) {
+        const fetchRequisition = async () => {
+          const accessToken = await getAccessTokenSilently();
+          const request = await fetch("http://localhost:3001/save-requisition-id", {
+            method: 'GET',
+            headers: {
+            "token": await getAccessTokenSilently()
+          }
+          });
+          const response = await request.json();
+          setRequisition(response.link);
+        };
+        fetchRequisition();
+      }
+    } catch (error) {
+      console.error(error.message)
     }
   }, [agreement]);
 
