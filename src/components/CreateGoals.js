@@ -139,19 +139,17 @@ const CreateGoals = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column", margin: "auto" }}>
       <br></br>
-      <label>
-        <input
-          type="text"
-          placeholder="Name"
-          style={{
-            height: "20px",
-            width: "200px",
-            margin: "auto",
-            backgroundColor: "lightgray",
-          }}
-          onChange={(e) => setGoalName(e.target.value)}
-        ></input>
-      </label>
+      <input
+        type="text"
+        placeholder="Name"
+        style={{
+          height: "20px",
+          width: "200px",
+          margin: "auto",
+          backgroundColor: "lightgray",
+        }}
+        onChange={(e) => setGoalName(e.target.value)}
+      ></input>
       <br></br>
       <textarea
         type="text"

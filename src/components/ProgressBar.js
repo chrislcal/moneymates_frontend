@@ -1,8 +1,6 @@
 import React from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 
-// import "react-circular-progressbar/dist/styles.css";
-
 const progressbar = () => {
   const user1_balances = {
     balances: [
