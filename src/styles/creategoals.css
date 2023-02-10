@@ -1,0 +1,58 @@
+.create-goal-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border: 1px solid red;
+}
+
+.name-input {
+    width: 90%;
+    height: 52px;
+    margin: 10px auto 10px auto;
+    background: #E0E0E2;
+    border: 0.5px solid #E0E0E2;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.input-goal-description {
+    width: 90%;
+    height: 197px;
+    background: #E0E0E2;
+    border: 0.5px solid #E0E0E2;
+    border-radius: 10px;
+    margin: 10px auto 10px auto;
+    font-size: 20px;
+}
+
+.input-amount {
+    width: 90%;
+    height: 52px;
+    background: #E0E0E2;
+    border: 0.5px solid #E0E0E2;
+    border-radius: 10px;
+    margin: 10px auto 10px auto;
+    font-size: 20px;
+}
+
+.select-account {
+    width: 90%;
+    height: 52px;
+    background: #E0E0E2;
+    border: 0.5px solid #E0E0E2;
+    border-radius: 10px;
+    margin: 10px auto 10px auto;
+    font-size: 20px;
+}
+
+.create-goal-container .create-new-goal {
+    width: 90%;
+    height: 78px;
+    background: #2CA39B;
+    border-radius: 9px;
+    margin: 10px auto 10px auto;
+    color: white;
+    font-size: 30px;
+}

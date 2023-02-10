@@ -1,0 +1,15 @@
+@import "rsuite/dist/rsuite.css";
+
+#root{ padding: 10px; }
+
+.rs-panel-header {
+    font-size: 20px;
+    color: #5D1788;
+    font-weight: bold;
+    line-height: 1.25;
+    height: 80px
+}
+
+.panel-contents {
+    font-size: 16px;
+}

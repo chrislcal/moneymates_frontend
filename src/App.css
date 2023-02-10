@@ -15,145 +15,43 @@
 	font-weight: 400;
 }
 
-/************ Default Css ************/
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 75px;
+* {
+  box-sizing: border-box;
+  margin: 0;
 }
 
 body {
-  font-weight: 400;
-  overflow-x: hidden;
-  position: relative;
-  background-color: #fff9fc !important;
-  color: #841AA9 !important;
-  font-family: 'Centra', sans-serif !important;
-}
-
-h1, h2, h3, h4, h5, h6 {
+  display: flex;
+  flex-direction: column;
   margin: 0;
-  padding: 0;
-  line-height: normal;
+  justify-content: center;
 }
 
-p, a, li, button, ul {
-  margin: 0;
-  padding: 0;
-  line-height: normal;
-  text-decoration: none;
-}
 
-a:hover {
-  text-decoration: none;
-}
-
-img {
+.App {
+  text-align: center;
+  justify-content: center;
   width: 100%;
-  height: auto;
-}
-
-button {
-  border: 0;
-  background-color: transparent;
-}
-
-input:focus, textarea:focus, select:focus {
-  outline: none;
-}
-
-/* @media (min-width:1700px) {
-	main .container {
-		max-width: 100%;
-		padding: 0 150px;
-	}
-}
-
-@media (max-width:768px) {
-  span.navbar-text {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column-reverse;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin-top: 20px;
-}
-} */
-
-p.success {
-	color: green;
-}
-
-p.danger {
-	color: red;
-}
-/************ Navbar Css ************/
-nav.navbar {
-  padding: 18px 0;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 9999;
-  transition:  0.32s ease-in-out;
-}
-nav.navbar.scrolled {
-  padding: 0px 0;
-  background-color: #fff9fc;
 }
 
 
-
-
-.navbar-text button {
-  font-weight: 700;
-  color: #841AA9;
-  border: 1px solid #841AA9;
-  padding: 18px 34px;
-  font-size: 18px;
-  margin-left: 18px;
-	position: relative;
-	background-color: transparent;
-	transition: 0.3s ease-in-out;
-  right: 50px;
-}
-.navbar-text button span {
-  z-index: 1;
-}
-.navbar-text button::before {
-  content: "";
-  width: 0%;
-  height: 100%;
-  position: absolute;
+header {
   background-color: #841AA9;
-  left: 0;
-  top: 0;
-  z-index: -1;
-  transition: 0.3s ease-in-out;
 }
-.navbar-text button:hover {
-  color: #fff9fc;
+
+.app-name {
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+  padding: 20px;
 }
-.navbar-text button:hover::before {
-	content: "";
-	width: 100%;
-	height: 100%;
-	position: absolute;
+
+.navbar {
+  margin: 10px auto 10px auto;
 }
 
 
-
-
-
-
-.logosvg {
-  width: 200px;
-}
 
 /************ Banner Css ************/
 .banner {

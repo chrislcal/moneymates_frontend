@@ -1,0 +1,48 @@
+.goals-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.goal-card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+    /* border: 1px solid red; */
+    border: 0.5px solid #E0E0E2;
+    border-radius: 20px;
+    border-collapse: collapse;
+    width: 90%;
+    height: 200px;
+    margin: 10px auto 10px auto;
+    filter: drop-shadow(0px 7px 4px rgba(0, 0, 0, 0.25));
+}
+
+.goal-name {
+    margin-top: 30px;
+}
+
+.goal-description {
+    margin: 10px;
+    border: 1px solid green;
+    font-size: 20px;
+}
+
+.goals-container .add-goal-button {
+    position: absolute;
+    width: 90%;
+    height: 75px;
+    left: 32px;
+    top: 700px;
+    background: #2CA39B;
+    border-radius: 9px;
+    font-size: 30px;
+    line-height: 36px;
+    color: #FFFFFF;
+    margin: 10px auto 10px auto;
+
+}
+
+
