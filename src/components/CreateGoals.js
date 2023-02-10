@@ -132,7 +132,7 @@ const CreateGoals = () => {
   const [goalDescription, setGoalDescription] = useState("");
 
   function handleClick() {
-    history.push("/GoalsDisplay");
+    history.push("/goals-display");
   }
 
   return (

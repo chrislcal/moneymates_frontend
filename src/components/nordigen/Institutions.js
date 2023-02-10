@@ -1,4 +1,4 @@
-import "../../styles/styles.css";
+import "../../styles/Nordigen/styles.css"
 import axios from 'axios';
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";

@@ -8,7 +8,7 @@ function Goals() {
 
     let history = useHistory();
     const handleAddGoal = () => {
-        history.push('/CreateGoals');
+        history.push('/create-goals');
     }
 
     return (

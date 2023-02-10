@@ -1,14 +1,13 @@
 import "../../src/App.css";
 import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Container, Row, Col, Navbar } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import { useAuth0 } from '@auth0/auth0-react';
 import Main from "./Main";
-import LoginButton from "./LoginButton";
-import Profile from "./Profile";
-import { NavBar } from "./NavBar";
+
+
 
 
 export const State = () => {
@@ -28,7 +27,7 @@ export const State = () => {
   const history = useHistory();
 
   // Set bankToken
-  const [bankToken, setBankToken] = useState(null);
+  const [hasBankToken, setHasBankToken] = useState(false);
 
   // setup an interval that calls the tick function at a frequency determined by the delta state variable
   useEffect(() => {
@@ -77,6 +76,7 @@ export const State = () => {
 
       // Banktoken status
       const { status } = await request.json();
+      setHasBankToken(status)
 
       if(user && !status) {
         history.push('/get-token');
@@ -89,9 +89,11 @@ export const State = () => {
   return (
     <section className="banner" id="home">
       <Container>
-        <NavBar/>
-        <Profile/>
-        {user? (<Main/>) : (
+        {user? (<Main hasLinkedBankAccount={hasBankToken}/>
+        
+        ) : (
+
+
         <Row className="aligh-items-center">
           <Col xs={12} md={6} xl={7}>
             <TrackVisibility>

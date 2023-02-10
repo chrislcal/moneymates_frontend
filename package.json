@@ -28,8 +28,7 @@
     "react-icons": "^4.7.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@mui/material": "^5.11.8",
-    
+    "@mui/material": "^5.11.8"
   },
   "scripts": {
     "start": "react-scripts start",
