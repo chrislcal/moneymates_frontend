@@ -4,6 +4,8 @@ import { NavBar } from "./NavBar";
 import { State } from "./State";
 import { useEffect, useState } from "react";
 
+
+
 const Main = () => {
   const { user, getAccessTokenSilently } = useAuth0();
 
@@ -35,10 +37,11 @@ const Main = () => {
   
 
   return (
+
     <div className="App">
-    <NavBar/>
     <Profile/>
     </div>
+   
   );
 };
 

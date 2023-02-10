@@ -38,29 +38,23 @@ export const NavBar = () => {
   const { user } = useAuth0();
 
   return (
-      <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
-        <Container>
-          <Navbar.Brand href="/">
+    <>
           {user ? (
             <div>
-              Welcome back, <strong>{user.nickname}</strong>
+              Welcome, <strong>{user.nickname}</strong>
+              <LogoutButton/>
             </div>
-      ) : (
-        <div className="logosvg"><img src={logo} alt="logo"/></div>
-      )}
+            
+            ) : (
+
+         <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
+          <Navbar.Brand href="/">
+            <div className="logosvg"><img src={logo} alt="logo"/></div>
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav">
-            <span className="navbar-toggler-icon"></span>
-          </Navbar.Toggle>
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto">
-              <Nav.Link href="#home" className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
-            </Nav>
             <span className="navbar-text">
                 {user ? (<LogoutButton/>) : (<LoginButton/>)}
             </span>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      </Navbar>)}
+      </>
   )
 }
