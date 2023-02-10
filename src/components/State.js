@@ -1,13 +1,15 @@
 import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
-import LoginButton from "./LoginButton";
 import { useAuth0 } from '@auth0/auth0-react';
+import Main from "./Main";
+import { NavBar } from "./NavBar";
+import LoginButton from "./LoginButton";
+import Profile from "./Profile";
 
-export const Banner = () => {
+export const State = () => {
   // state to keep track of the current loop number of the text rotation animation
   const [loopNum, setLoopNum] = useState(0);
   // state to keep track of whether the text rotation animation is in a "deleting" phase (removing text) or an "adding" phase (adding text)
@@ -85,17 +87,10 @@ export const Banner = () => {
   return (
     <section className="banner" id="home">
       <Container>
-        {user? 
-
-
-        (<div>
-          <p>success</p>
-        </div>):
-        
-        
-        
-        
-        (<Row className="aligh-items-center">
+        <LoginButton></LoginButton>
+        <Profile/>
+        {user? (<Main/>) : (
+        <Row className="aligh-items-center">
           <Col xs={12} md={6} xl={7}>
             <TrackVisibility>
               {({ isVisible }) =>

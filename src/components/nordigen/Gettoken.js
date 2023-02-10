@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { NavBar } from "../NavBar";
 
 const GetToken = () => {
   const [status, setStatus] = useState(null);
@@ -67,7 +68,9 @@ const GetToken = () => {
   }, [status, history]);
 
   return (
+    
     <div className="bankContainer">
+      <NavBar/>
       <h2 id="connectToBankHeader">Connect to bank</h2>
       <p id="connectParagraph">
         Connect to obtain a list of available financial institutions. Our bank
