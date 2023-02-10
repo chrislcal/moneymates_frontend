@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const CreateGoals = () => {
   const user1_accounts = {
@@ -125,15 +126,12 @@ const CreateGoals = () => {
     user1_accounts.account.product
   );
 
-  const GoalsDisplayhistory = useHistory();
+  const history = useHistory();
   const [goalName, setGoalName] = useState("");
   const [goalDescription, setGoalDescription] = useState("");
 
   function handleClick() {
-    GoalsDisplayhistory.push({
-      pathname: "/GoalsDisplay",
-      search: `?name=${goalName}&description=${goalDescription}`,
-    });
+    history.push("/GoalsDisplay");
   }
 
   return (

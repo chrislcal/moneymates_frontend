@@ -1,4 +1,3 @@
-import React from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 
 const progressbar = () => {
@@ -27,8 +26,9 @@ const progressbar = () => {
   const percentage = (balance / totalAmount) * 100;
 
   return (
-    <div style={{ width: 200, height: 200 }}>
+    <div style={{ width: 200, height: 200,  }}>
       <CircularProgressbar
+      
         value={percentage}
         text={`${percentage.toFixed(0)}%`}
       />
