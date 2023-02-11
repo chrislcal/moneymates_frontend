@@ -22,6 +22,7 @@ const Main = () => {
       });
       const response = await request.json();
       setAccounts(response);
+      console.log(response)
     } catch (error) {
       console.error(error);
     }
