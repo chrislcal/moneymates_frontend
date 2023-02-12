@@ -82,7 +82,7 @@ export const State = () => {
         history.push('/get-token');
 
       } else if(user && status) {
-        history.push('/main');
+        history.push('/home');
       }
     }
       

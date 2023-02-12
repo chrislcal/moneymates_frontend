@@ -7,51 +7,73 @@ import '../styles/home.css';
 
 
 const Home = () => {
-  const { getAccessTokenSilently } = useAuth0();
+  const { user, getAccessTokenSilently } = useAuth0();
 
   const [accountDetails, setBankDetails] = useState(0);
   const [balances, setBalances] = useState(0);
 
   useEffect(() => {
-    const getDetails = async() => {
+    const saveAccounts = async() => {
       try {
-        const request = await fetch('http://localhost:3001/details', {
-          method: 'GET',
+        const request = await fetch('http://localhost:3001/save-accounts', {
+          method: 'GET', 
           headers: {
             token: await getAccessTokenSilently()
           }
+  
         });
-        const details = await request.json();
-        setBankDetails(details);
-
+        const response = await request.json();
+    
       } catch (error) {
-        console.log(error);
-      };
-    }
-    getDetails()
-  }, []);
-
-  useEffect(() => {
-    const getBalances = async() => {
-      try {
-        const request = await fetch('http://localhost:3001/balances', {
-          method: 'GET',
-          headers: {
-            token: await getAccessTokenSilently()
-          }
-        });
-        
-        const data = await request.json();
-        setBalances(data);
-
-      } catch (error) {
-        console.log(error.message)
+        console.log(error.message);
       }
-    }
+    };
+    
+      const getDetails = async() => {
+        try {
+          const request = await fetch('http://localhost:3001/details', {
+            method: 'GET',
+            headers: {
+              token: await getAccessTokenSilently()
+            }
+          });
+          const details = await request.json();
+          setBankDetails(details);
+  
+        } catch (error) {
+          console.log(error);
+        };
+      }
 
-    getBalances();
-  }, []);
+      const getBalances = async() => {
+        try {
+          const request = await fetch('http://localhost:3001/balances', {
+            method: 'GET',
+            headers: {
+              token: await getAccessTokenSilently()
+            }
+          });
+          
+          const balances = await request.json();
+          setBalances(balances);
+  
+        } catch (error) {
+          console.log(error.message)
+        }
+      }
 
+      const executeFunctions = async () => {
+        if (user.sub) {
+          await saveAccounts()
+        }
+        await Promise.all([getBalances(), getDetails()]);
+      }
+
+      executeFunctions()
+      
+    }, [user?.sub]); 
+
+  
 
   // Defining accounts to be displayed 
   let displayedAccounts;
@@ -79,7 +101,6 @@ const Home = () => {
     });
   }
   
-  if(accountDetails && balances) {
     return (
       <PanelGroup accordion defaultActiveKey={1} bordered>
         <Panel header={`Balance checking account`} eventKey={1} id="panel1" >
@@ -103,9 +124,6 @@ const Home = () => {
         </Panel>
       </PanelGroup>
       )
-  }
-
-  
 };
 
 export default Home;
