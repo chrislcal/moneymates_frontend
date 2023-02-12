@@ -10,6 +10,7 @@ const Main = () => {
 
   const [accounts, setAccounts] = useState(null);
   const [transactions, setTransactions] = useState("");
+  const [details, setDetails] = useState("");
   
   const getAccounts = async() => {
     try {
@@ -22,6 +23,21 @@ const Main = () => {
       });
       const response = await request.json();
       setAccounts(response);
+      console.log(response)
+    } catch (error) {
+      console.error(error);
+    }
+
+    try {
+      const request = await fetch('http://localhost:3001/details', {
+        method: 'GET', 
+        headers: {
+          token: await getAccessTokenSilently()
+        }
+
+      });
+      const response = await request.json();
+      setDetails(response);
       console.log(response)
     } catch (error) {
       console.error(error);

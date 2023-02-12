@@ -3,10 +3,10 @@ import { useHistory } from 'react-router-dom';
 import '../styles/goals.css';
 
 function Goals() {
-    const testData =
-        { bgcolor: "#5D1788", completed: 90 };
+    const testData = { bgcolor: "#5D1788", completed: 90 };
 
     let history = useHistory();
+    
     const handleAddGoal = () => {
         history.push('/create-goals');
     }

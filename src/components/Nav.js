@@ -32,50 +32,52 @@ export default function Navbar(props) {
             aria-label="scrollable auto tabs example"
             TabIndicatorProps={{ style: { background: "#F6A730", height: 8 } }}
           >
-            {props.hasLinkedBankAccount && (
-              <>
-                <Tab
-                  style={{
-                    color: "white",
-                    fontSize: 20,
-                    textDecoration: "none",
-                  }}
-                  label="Home"
-                  component={Link}
-                  to="/home"
-                />
-                <Tab
-                  style={{
-                    color: "white",
-                    fontSize: 20,
-                    textDecoration: "none",
-                  }}
-                  label="Goals"
-                  component={Link}
-                  to="/goals"
-                />
-                <Tab
-                  style={{
-                    color: "white",
-                    fontSize: 20,
-                    textDecoration: "none",
-                  }}
-                  label="Recurring"
-                  component={Link}
-                  to="/recurring"
-                />
-                <Tab
-                  style={{
-                    color: "white",
-                    fontSize: 20,
-                    textDecoration: "none",
-                  }}
-                  label="Categories"
-                  component={Link}
-                  to="/categories"
-                />
-              </>
-            )}
+            {props.hasLinkedBankAccount && [
+              <Tab
+                style={{
+                  color: "white",
+                  fontSize: 20,
+                  textDecoration: "none",
+                }}
+                label="Home"
+                component={Link}
+                to="/home"
+                key="home"
+              />,
+              <Tab
+                style={{
+                  color: "white",
+                  fontSize: 20,
+                  textDecoration: "none",
+                }}
+                label="Goals"
+                component={Link}
+                to="/goals"
+                key="goals"
+              />,
+              <Tab
+                style={{
+                  color: "white",
+                  fontSize: 20,
+                  textDecoration: "none",
+                }}
+                label="Recurring"
+                component={Link}
+                to="/recurring"
+                key="recurring"
+              />,
+              <Tab
+                style={{
+                  color: "white",
+                  fontSize: 20,
+                  textDecoration: "none",
+                }}
+                label="Categories"
+                component={Link}
+                to="/categories"
+                key="categories"
+              />,
+            ]}
           </Tabs>
         </Box>
       ) : (

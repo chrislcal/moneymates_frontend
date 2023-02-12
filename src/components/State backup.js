@@ -80,9 +80,6 @@ export const State = () => {
 
       if(user && !status) {
         history.push('/get-token');
-
-      } else if(user && status) {
-        history.push('/main');
       }
     }
       
@@ -92,6 +89,11 @@ export const State = () => {
   return (
     <section className="banner" id="home">
       <Container>
+        {user? (<Main/>
+        
+        ) : (
+
+
         <Row className="aligh-items-center">
           <Col xs={12} md={6} xl={7}>
             <TrackVisibility>
@@ -110,7 +112,8 @@ export const State = () => {
                 </div>}
             </TrackVisibility>
           </Col>
-        </Row>
+        </Row>)}
+        
       </Container>
     </section>
   )
