@@ -1,12 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from 'axios';
 
-const Profile = () => {
+const Initialization = (props) => {
+  const [hasInitializedUser, setHasInitializedUser] = useState(false);
   const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
     const saveUserData = async () => {
+      if(!isAuthenticated) {
+        
+      }
       try {
         const accessToken = await getAccessTokenSilently();
         const domain = "dev-u5mawjni6mjjw103.us.auth0.com";
@@ -37,14 +41,15 @@ const Profile = () => {
       } catch (error) {
         console.error(error);
       }
+      setHasInitializedUser(true);
     };
-    if (isAuthenticated) {
-      saveUserData();
-    }
-  }, [isAuthenticated, getAccessTokenSilently, user?.sub]);
+   
+       saveUserData();
+    
+  }, [isAuthenticated, hasInitializedUser, getAccessTokenSilently, user?.sub]);
 
-  return null
+  return hasInitializedUser ? props.children : <div>Initializing</div>;
 };
 
-export default Profile;
+export default Initialization;
 

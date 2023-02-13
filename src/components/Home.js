@@ -9,10 +9,13 @@ import '../styles/home.css';
 const Home = () => {
   const { user, getAccessTokenSilently } = useAuth0();
 
-  const [accountDetails, setBankDetails] = useState(0);
-  const [balances, setBalances] = useState(0);
+  const [accountDetails, setBankDetails] = useState([]);
+  const [balances, setBalances] = useState([]);
 
   useEffect(() => {
+    if(!user?.sub) {
+      return;
+    }
     const saveAccounts = async() => {
       try {
         const request = await fetch('http://localhost:3001/save-accounts', {
@@ -63,10 +66,10 @@ const Home = () => {
       }
 
       const executeFunctions = async () => {
-        if (user.sub) {
+        
           await saveAccounts()
-        }
-        await Promise.all([getBalances(), getDetails()]);
+          await Promise.all([getBalances(), getDetails()]);
+        
       }
 
       executeFunctions()
@@ -76,35 +79,32 @@ const Home = () => {
   
 
   // Defining accounts to be displayed 
-  let displayedAccounts;
 
-  if(accountDetails) {
     console.log("Details:", accountDetails);
-    displayedAccounts = accountDetails.map((element) => {
+    let displayedAccounts = accountDetails.map((element) => {
       return(<p key={element.details.bban} className='panel-contents'>{element.details.product}</p>)
     })
-  }
+  
 
   // Setting balances 
-  let checkingsBalance;
-  let totalBalance;
+ 
 
-  if(balances) {
+  
     console.log("Balances:", balances);
 
-    checkingsBalance = balances[0].balanceAmount.amount;
+    let checkingsBalance = balances[0]?.balanceAmount?.amount;
 
-    totalBalance = balances.map((element) => {
+    let totalBalance = balances.map((element) => {
       return element.balanceAmount.amount
     }).reduce((acc, curr) => {
       return acc + curr
-    });
-  }
+    }, 0);
+
   
     return (
       <PanelGroup accordion defaultActiveKey={1} bordered>
         <Panel header={`Balance checking account`} eventKey={1} id="panel1" >
-         <p className='panel-contents'> NOK {parseFloat(checkingsBalance, 2)}</p>
+         <p className='panel-contents'> NOK {checkingsBalance? parseFloat(checkingsBalance, 2) : '...'}</p>
         </Panel>
         <Panel header={`Total Balance`} eventKey={2} id="panel2" >
           <p className='panel-contents'>NOK {parseFloat(totalBalance, 2)}</p>

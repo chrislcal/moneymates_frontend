@@ -51,7 +51,9 @@ const CreateGoals = () => {
   async function handleClick() {
     try {
       const request = await fetch('http://localhost:3001/save-goal', {
+        method: 'POST',
         headers: {
+          "Content-Type": "application/json",
           token: await getAccessTokenSilently()
         },
         body: JSON.stringify({
@@ -63,8 +65,8 @@ const CreateGoals = () => {
       });
       const response = await request.json()
       
-      if(response.status === 200) {
-        history.push("/goals-display");
+      if(response) {
+        history.push("/goals");
       }
 
     } catch (error) {

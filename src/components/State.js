@@ -5,7 +5,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import { useAuth0 } from '@auth0/auth0-react';
-import Main from "./Main";
+import axios from 'axios'
 
 
 
@@ -27,7 +27,7 @@ export const State = () => {
   const history = useHistory();
 
   // Set bankToken
-  const [hasBankToken, setHasBankToken] = useState(false);
+
 
   // setup an interval that calls the tick function at a frequency determined by the delta state variable
   useEffect(() => {
@@ -63,31 +63,77 @@ export const State = () => {
   }
 
   const {user, getAccessTokenSilently} = useAuth0();
-  
 
+  
+  
   useEffect(() => {
     async function main() {
-      const request = await fetch('http://localhost:3001/check-token-status', {
-        method: 'GET',
-        headers: {
-          "token": await getAccessTokenSilently()
+      console.log({user})
+      if(!user?.sub) {
+        return
+      }
+
+      try {
+        const accessToken = await getAccessTokenSilently();
+        const domain = "dev-u5mawjni6mjjw103.us.auth0.com";
+        const user_id = user.sub;
+  
+        const { data: userData } = await axios.get(
+          `https://${domain}/api/v2/users/${user_id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        );
+
+        console.log("step1")
+  
+        await axios({
+          url: 'http://localhost:3001/save-user-data',
+          method: 'POST',
+          data: {
+            user_id: user_id,
+            email: userData.email,
+            nickname: userData.nickname
+          },
+          headers: {
+            token: accessToken
+          }
+          
+        });
+
+        console.log("step2")
+  
+  
+        const request = await fetch('http://localhost:3001/check-token-status', {
+          method: 'GET',
+          headers: {
+            "token": await getAccessTokenSilently()
+          }
+        });
+
+        console.log("step3")
+  
+        // Banktoken status
+        const { status } = await request.json();
+  
+        console.log(user.sub, status)
+  
+        if(user.sub && !status) {
+          history.push('/get-token');
+  
+        } else if(user.sub && status) {
+          history.push('/home');
         }
-      });
-
-      // Banktoken status
-      const { status } = await request.json();
-      setHasBankToken(status)
-
-      if(user && !status) {
-        history.push('/get-token');
-
-      } else if(user && status) {
-        history.push('/home');
+        
+      } catch (error) {
+        console.error(error)
       }
     }
       
     main();
-  }, [user])
+  }, [user?.sub, getAccessTokenSilently, history])
 
   return (
     <section className="banner" id="home">
