@@ -33,11 +33,14 @@ const Header = () => {
 
     
     return ( 
-        <header>
-          <h1 className="app-name">MoneyMates</h1>
-          <Navbar hasLinkedBankAccount={hasBankToken}/>
-          {user? (<LogoutButton/>):(<LoginButton/>)}
-        </header>
+      <header className="headerwrapper">
+      <div className="header">
+        <h1 className="header__title">MoneyMates</h1>
+      {user ? <LogoutButton /> : <LoginButton />}
+      </div>
+        <Navbar hasLinkedBankAccount={hasBankToken} />
+      </header>
+    
      );
 }
  
