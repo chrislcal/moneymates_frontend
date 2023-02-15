@@ -14,22 +14,17 @@ export default function Navbar(props) {
 
   let activeTabIndex = 0;
 
-  switch (location.pathname) {
-    case '/home': 
-    activeTabIndex = 0;
-    break;
-    
-    case '/goals':
-      activeTabIndex = 1;
-      break;
-
-    case '/reccuring':
-      activeTabIndex = 2;
-      break;
-
-    case '/categories': 
-      activeTabIndex = 3;
-      break;
+  if(location.pathname == "/home"){
+    activeTabIndex = 0
+  }
+  else if(location.pathname.includes("/goals")){
+    activeTabIndex = 1
+  }
+  else if(location.pathname == "/recurring"){
+    activeTabIndex = 2
+  }
+  else if(location.pathname == "/categories"){
+    activeTabIndex = 3
   }
 
 
