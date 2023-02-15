@@ -16,9 +16,8 @@ root.render(
       scope: "read:current_user openid: profile email nickname"
     }}
   >
-  <React.StrictMode>
+
     <App />
-  </React.StrictMode>
   </Auth0Provider>
 );
 

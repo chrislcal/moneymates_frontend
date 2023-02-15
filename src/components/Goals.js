@@ -12,8 +12,10 @@ function Goals() {
 
     const [goals, setGoals] = useState([]);
     const [bankData, setBankData] = useState([]);
+    const [selectedGoal, setSelectedGoal] = useState('');
 
     useEffect(() => {
+        console.log('useffect ran')
         const getBalances = async() => {
             try {
                 const request = await fetch('http://localhost:3001/universal', {
@@ -61,19 +63,23 @@ function Goals() {
 
     if(goals.length > 0 && bankData.length > 0) {
         allGoals = goals.map((goal) => {
-            const selectedAccount = bankData.find(account => account.details.product === goal[3]);
+            const goalId = goal[0];
+            const goalAccount = goal[4];
+            const goalSum = goal[3];
+            const selectedAccount = bankData.find(account => account.details.product === goalAccount);
             const balance = selectedAccount ? selectedAccount.balances.balanceAmount.amount : 0;
-            const percentage = (balance / goal[2]) * 100;
+            const percentage = (balance / goalSum) * 100;
+
 
             return(
-                <div className="goal-card" key={goal[0]}>
+                <div onClick={() => history.push(`/goals/${goalId}`)} className="goal-card" key={goalId}>
                 <div className="progress-bar">
                     <ProgressBar bgcolor="#BDBDBD" completed={percentage.toFixed(2)} />
                 </div>
-                <h1 className="goal-name">{goal[0]}</h1>
+                <h1 className="goal-name">{goal[1]}</h1>
 
                 <div className="goal-description">
-                    <p>{goal[1]}</p>
+                    <p>{goal[2]}</p>
                 </div>
             </div>
             )
@@ -81,8 +87,9 @@ function Goals() {
     }
 
     const handleAddGoal = () => {
-        history.push('/create-goals');
+        history.push('/create-goals', {goals});
     }
+
 
     return (
         <div className="goals-container">

@@ -18,15 +18,15 @@ function App() {
       <Router>
         <Header/>
         <Switch>
-          <Route exact path="/home" component={Home}></Route>
-          <Route exact path="/create-goals" component={CreateGoals}></Route>
-          <Route exact path="/goals-display" component={GoalsDisplay}></Route>
-          <Route exact path="/goals" component={Goals}></Route>
-          <Route exact path="/categories" component={CategoryCard} />
           <Route exact path="/" component={State} />
-          <Route exact path="/get-token" component={Gettoken} />
-          <Route exact path="/loading" component={Loading} />
-          <Route exact path="/institutions" component={Institutions} />
+          <Route path="/home" component={Home}></Route>
+          <Route path="/create-goals" component={CreateGoals}></Route>
+          <Route path="/goals/:id" component={GoalsDisplay}></Route>
+          <Route path="/goals" component={Goals}></Route>
+          <Route path="/categories" component={CategoryCard} />
+          <Route path="/get-token" component={Gettoken} />
+          <Route path="/loading" component={Loading} />
+          <Route path="/institutions" component={Institutions} />
         </Switch>
       </Router>
     
