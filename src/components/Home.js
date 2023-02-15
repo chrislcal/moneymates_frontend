@@ -11,6 +11,7 @@ const Home = () => {
 
   const [accountDetails, setBankDetails] = useState([]);
   const [balances, setBalances] = useState([]);
+  const [goals, setGoals] = useState([]);
 
   useEffect(() => {
     if(!user?.sub) {
@@ -65,6 +66,26 @@ const Home = () => {
         }
       }
 
+      const getGoals = async() => {
+        try {
+            const request = await fetch('http://localhost:3001/get-goals', {
+                method: 'GET', 
+                headers: {
+                    token: await getAccessTokenSilently()
+                }
+            });
+
+            const response = await request.json();
+            setGoals(response);
+            console.log(response)
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    getGoals()
+
       const executeFunctions = async () => {
         
           await saveAccounts()
@@ -85,6 +106,11 @@ const Home = () => {
       return(<p key={element.details.bban} className='panel-contents'>{element.details.product}</p>)
     })
   
+    let displayedGoals = goals.map((el) => {
+      return(
+        <p className='panel-contents'>{el[1]}</p>
+      )
+    })
 
   // Setting balances 
  
@@ -109,10 +135,8 @@ const Home = () => {
         <Panel header={`Total Balance`} eventKey={2} id="panel2" >
           <p className='panel-contents'>NOK {parseFloat(totalBalance, 2)}</p>
         </Panel>
-        <Panel header="Goals (2)" eventKey={3} id="panel3" >
-         
-          <p className='panel-contents'>Ayia Napa</p>
-          <p className='panel-contents'>New couch</p>
+        <Panel header={`Goals(${goals.length})`} eventKey={3} id="panel3" >
+          {displayedGoals}
         </Panel>
         <Panel header={`Accounts (${accountDetails.length})`} eventKey={4} id="panel4" >
           {displayedAccounts}

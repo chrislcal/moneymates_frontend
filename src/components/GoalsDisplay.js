@@ -1,17 +1,19 @@
 import ProgressBar from "./ProgressBar";
-import axios from 'axios'
 import { useEffect, useState, useCallback } from "react";
+import { useHistory } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 
 
 const GoalsDisplay = (props) => {
 
+  const history = useHistory();
+  
   const id = props.match.params.id
   const {getAccessTokenSilently} = useAuth0(); 
 
   // States
-  const [goal, setGoal] = useState([])
+  const [goal, setGoal] = useState([]);
   const [bankData, setBankData] = useState([])
 
 
@@ -26,7 +28,7 @@ const GoalsDisplay = (props) => {
       });
 
       const response = await res.json()
-      setGoal(response)
+      setGoal([response])
       
 
       const request = await fetch('http://localhost:3001/universal', {
@@ -54,43 +56,52 @@ const GoalsDisplay = (props) => {
 
   console.log(bankData);
 
+  const deleteGoal = async (id) => {
+    try {
+      const request = await fetch(`http://localhost:3001/goals/${id}`, {
+        method: 'DELETE', 
+        headers: {
+          token: await getAccessTokenSilently()
+        }
+      }) 
+
+      history.push('/goals')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
  
   let displayedGoal;
+  console.log(goal)
 
   if(goal && bankData) {
       displayedGoal = goal.map((goal) => {
-
-          const goalId = goal[0];
-          const goalAccount = goal[4];
-          const goalSum = goal[3];
-          const goalName = goal[1];
-          const goalDescription = goal[2];
-
-          const selectedAccount = bankData.find(account => account.details.product === goalAccount);
+          const selectedAccount = bankData.find(account => account.details.product === goal[0].account);
+          console.log({selectedAccount})
           const balance = selectedAccount ? selectedAccount.balances.balanceAmount.amount : 0;
-          const percentage = (balance / goalSum) * 100;
+          console.log(balance)
+          const percentage = (balance / goal[0].amount) * 100;
+          console.log(percentage)
+
+          let testData = { bgcolor: "#5D1788"};
 
           return (
-            <div>
-              <h1 style={{ margin: "auto" }}>{goalName}</h1>
-              <p style={{ margin: "auto" }}>{goalDescription}</p>
-            <div className="progress-bar">
+            <div key={goal.id} style={{ position: 'relative', display: 'flex', flexDirection: 'column', height: '300px'}}>
+              <h1 style={{ margin: "auto" }}>{goal[0].name}</h1>
+              <p style={{ margin: "auto" }}>{goal[0].description}</p>
+              <div className="progress-bar">
               <ProgressBar bgcolor={testData.bgcolor} completed={percentage.toFixed(2)} />
             </div>
+            <button onClick={() => deleteGoal(goal[0].id)}>DELETE GOAL</button>
           </div>
             )
-      })
-      
+      }) 
     }
 
-
-  let testData = { bgcolor: "#5D1788"};
-
-
-
   return (
-    <div>
+    <div >
       {displayedGoal}
     </div>
   );
