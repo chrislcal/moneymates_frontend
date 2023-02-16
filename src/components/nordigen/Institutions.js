@@ -16,7 +16,7 @@ const Institutions = () => {
     const getInstitutions = async () => {
       try {
         const accessToken = await getAccessTokenSilently();
-        const domain = `${process.env.REACT_APP_AUTH0_DOMAIN}`;
+        const domain = process.env.REACT_APP_AUTH0_DOMAIN;
         const user_id = user.sub;
 
         const { data: userData } = await axios.get(`https://${domain}/api/v2/users/${user_id}`, {
