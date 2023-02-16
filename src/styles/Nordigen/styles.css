@@ -1,0 +1,118 @@
+.bankContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  height: 500px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+.bankContainer #connectParagraph {
+  position: relative;
+  text-align: center;
+  height: 300px;
+}
+.bankContainer #connectToBankHeader {
+  color: rgb(88, 88, 88);
+  position: relative;
+  font-size: 30px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 10px;
+}
+.bankContainer #connectBtn {
+  color: white;
+  font-size: 25px;
+  width: 300px;
+  height: 70px;
+  border-radius: 20px;
+  border: none;
+  background-color: #841AA9;
+}
+.bankContainer #connectBtn:hover {
+  background-color: rgb(132, 57, 172);
+}
+
+#institutionSelectHeader {
+  position: relative;
+  color: #841AA9;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 25px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+  width: 220px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.searchBarContainer {
+  margin: 0 auto;
+  width: 400px;
+  margin-bottom: 10px;
+}
+
+.searchBar {
+  width: 400px;
+  height: 40px;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+  margin: 0 auto;
+}
+
+.searchBar:focus {
+  border-color: #007bff;
+}
+
+.bankItemContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  position: relative;
+  width: 400px;
+  height: 110px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  border: 2px solid rgb(201, 200, 200);
+  border-radius: 10px;
+}
+.bankItemContainer:hover {
+  background-color: rgb(211, 210, 211);
+}
+.bankItemContainer .bankLogo {
+  position: relative;
+  margin: 0px 15px;
+  width: 100px;
+}
+.bankItemContainer .institutionLabel {
+  width: 300px;
+  margin: 0px 60px 0px 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loading-spinner {
+  border: 4px solid #cdcbcb;
+  border-top: 4px solid #753dca;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}/*# sourceMappingURL=styles.css.map */
