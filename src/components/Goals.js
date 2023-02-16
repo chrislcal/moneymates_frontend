@@ -4,7 +4,7 @@ import ProgressBar from './ProgressBar';
 import { useHistory } from 'react-router-dom';
 import {useEffect, useState} from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-
+import { BsPlusLg } from "react-icons/bs";
 import '../styles/goals.css';
 
 function Goals() {
@@ -96,7 +96,7 @@ function Goals() {
             {allGoals}
 
             <button className="add-goal-button" onClick={handleAddGoal}>
-                Add new goal
+                <BsPlusLg className='plus'/>
             </button>
         </div>
     )
