@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
-  margin: 30px;
-  width: 350px;
+  width: 70%;
   height: 500px;
+  margin: 0 auto;
+  margin-top: 50px;
 }
 .bankContainer #connectParagraph {
   position: relative;
@@ -26,7 +26,7 @@
   height: 70px;
   border-radius: 20px;
   border: none;
-  background-color: rgb(95, 26, 114);
+  background-color: #841AA9;
 }
 .bankContainer #connectBtn:hover {
   background-color: rgb(132, 57, 172);
@@ -34,12 +34,35 @@
 
 #institutionSelectHeader {
   position: relative;
-  color: rgb(71, 17, 91);
+  color: #841AA9;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 25px;
-  margin: 20px 0px 10px 10px;
+  margin: 0 auto;
   padding-bottom: 20px;
   width: 220px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.searchBarContainer {
+  margin: 0 auto;
+  width: 400px;
+  margin-bottom: 10px;
+}
+
+.searchBar {
+  width: 400px;
+  height: 40px;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+  margin: 0 auto;
+}
+
+.searchBar:focus {
+  border-color: #007bff;
 }
 
 .bankItemContainer {
@@ -49,7 +72,8 @@
   position: relative;
   width: 400px;
   height: 110px;
-  margin: 10px 0px 0px 10px;
+  margin: 0 auto;
+  margin-bottom: 10px;
   border: 2px solid rgb(201, 200, 200);
   border-radius: 10px;
 }
@@ -91,4 +115,4 @@
   100% {
     transform: rotate(360deg);
   }
-}
+}/*# sourceMappingURL=styles.css.map */
