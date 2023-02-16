@@ -144,8 +144,8 @@ export const State = () => {
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                 <span className="tagline">Welcome to MoneyMates</span>
-                <h1>{`MoneyMates values are`} <span className="txt-rotate" ><span className="wrap">{text}</span></span></h1>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <h1>{`Our values are`} <span className="txt-rotate" ><span className="wrap">{text}</span></span></h1>
+                  <p>Join forces with Moneymates to make your money work for you. Our user-friendly app and community support will help you achieve your financial goals. With Moneymates, saving money has never been easier.</p>
               </div>}
             </TrackVisibility>
           </Col>

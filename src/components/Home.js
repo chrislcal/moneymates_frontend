@@ -123,8 +123,10 @@ const Home = () => {
     let totalBalance = balances.map((element) => {
       return element.balanceAmount.amount
     }).reduce((acc, curr) => {
-      return acc + curr
-    }, 0);
+      return Number(acc) + Number(curr)
+      });
+
+    console.log({totalBalance})
 
   
     return (
@@ -133,7 +135,7 @@ const Home = () => {
          <p className='panel-contents'> NOK {checkingsBalance? parseFloat(checkingsBalance, 2) : '...'}</p>
         </Panel>
         <Panel header={`Total Balance`} eventKey={2} id="panel2" >
-          <p className='panel-contents'>NOK {parseFloat(totalBalance, 2)}</p>
+          <p className='panel-contents'>NOK {totalBalance.toFixed(2)}</p>
         </Panel>
         <Panel header={`Goals(${goals.length})`} eventKey={3} id="panel3" >
           {displayedGoals}

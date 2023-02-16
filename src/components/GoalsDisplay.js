@@ -101,7 +101,7 @@ const GoalsDisplay = (props) => {
                 <p>{goal[0].description}</p>
               </div>
               <div className="saving-progress">
-                <p><span className="bold">NOK{goal[0].amount}</span> / {balance}</p>
+                <p><span className="bold">NOK {balance}</span> / {goal[0].amount}</p>
               </div>
               <div className="account-name">
                 <p>Account: <span className="bold">{selectedAccount.details.product}</span></p>
