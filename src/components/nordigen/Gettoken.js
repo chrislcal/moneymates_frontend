@@ -70,7 +70,6 @@ const GetToken = () => {
   return (
     
     <div className="bankContainer">
-      <NavBar/>
       <h2 id="connectToBankHeader">Connect to bank</h2>
       <p id="connectParagraph">
         Connect to obtain a list of available financial institutions. Our bank

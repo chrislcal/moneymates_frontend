@@ -3,10 +3,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: absolute;
-    margin: 30px;
-    width: 350px;
+    width: 70%;
     height: 500px;
+    margin: 0 auto;
+    margin-top: 50px;
 
     #connectParagraph {
         position: relative;
@@ -30,7 +30,7 @@
         height: 70px;
         border-radius: 20px;
         border: none;
-        background-color: rgb(95, 26, 114);
+        background-color: #841AA9;
 
         &:hover {
             background-color: rgb(132, 57, 172);
