@@ -124,7 +124,7 @@ const Home = () => {
       return element.balanceAmount.amount
     }).reduce((acc, curr) => {
       return Number(acc) + Number(curr)
-      });
+      }, 0);
 
     console.log({totalBalance})
 
