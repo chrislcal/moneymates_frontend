@@ -4,7 +4,12 @@
     height: 600px;
     justify-content: center;
     width: 90%;
-    margin: auto;
+    margin: 10px auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0));
+    overflow: hidden;
+    border-radius: 20px;
+    border-collapse: collapse;
 }
 
 .goal-header {
@@ -21,13 +26,7 @@
 }
 
 .progress-bar-rounded {
-    margin: auto;
-    width: 90%;
-}
-
-.progressBarRounded {
-    border-radius: 20px;
-    width: 80%;
+    width: 100%;
 }
 
 .account-name {

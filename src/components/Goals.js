@@ -73,13 +73,13 @@ function Goals() {
 
             return(
                 <div onClick={() => history.push(`/goals/${goalId}`)} className="goal-card" key={goalId}>
+                <div className="progress-bar">
+                    <ProgressBar bgcolor="#5D1788" completed={percentage.toFixed(2)} />
+                </div>
                 <h1 className="goal-name">{goal[1]}</h1>
 
                 <div className="goal-description">
                     <p>{goal[2]}</p>
-                </div>
-                <div className="progress-bar">
-                    <ProgressBar bgcolor="#5D1788" completed={percentage.toFixed(2)} />
                 </div>
             </div>
             )

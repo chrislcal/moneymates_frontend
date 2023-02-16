@@ -91,14 +91,14 @@ const GoalsDisplay = (props) => {
 
           return (
             <div className="goal-display" key={goal.id} >
+              <div className="progress-bar-rounded">
+                <ProgressBar className="progressBarRounded" bgcolor={testData.bgcolor} completed={percentage.toFixed(2)} />
+              </div>
               <div className="goal-header">
                 <h1>{goal[0].name}</h1>
               </div>
               <div className="description">
                 <p>{goal[0].description}</p>
-              </div>
-              <div className="progress-bar-rounded">
-                <ProgressBar className="progressBarRounded" bgcolor={testData.bgcolor} completed={percentage.toFixed(2)} />
               </div>
               <div className="saving-progress">
                 <p><span className="bold">NOK{goal[0].amount}</span> / {balance}</p>
