@@ -2,6 +2,8 @@ import ProgressBar from "./ProgressBar";
 import { useEffect, useState, useCallback } from "react";
 import { useHistory } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import '../styles/goalsDisplay.css';
+import { RiDeleteBinLine } from "react-icons/ri"; 
 
 
 
@@ -88,13 +90,23 @@ const GoalsDisplay = (props) => {
           let testData = { bgcolor: "#5D1788"};
 
           return (
-            <div key={goal.id} style={{ position: 'relative', display: 'flex', flexDirection: 'column', height: '300px'}}>
-              <h1 style={{ margin: "auto" }}>{goal[0].name}</h1>
-              <p style={{ margin: "auto" }}>{goal[0].description}</p>
-              <div className="progress-bar">
-              <ProgressBar bgcolor={testData.bgcolor} completed={percentage.toFixed(2)} />
-            </div>
-            <button onClick={() => deleteGoal(goal[0].id)}>DELETE GOAL</button>
+            <div className="goal-display" key={goal.id} >
+              <div className="goal-header">
+                <h1>{goal[0].name}</h1>
+              </div>
+              <div className="description">
+                <p>{goal[0].description}</p>
+              </div>
+              <div className="progress-bar-rounded">
+                <ProgressBar className="progressBarRounded" bgcolor={testData.bgcolor} completed={percentage.toFixed(2)} />
+              </div>
+              <div className="saving-progress">
+                <p><span className="bold">NOK{goal[0].amount}</span> / {balance}</p>
+              </div>
+              <div className="account-name">
+                <p>Account: <span className="bold">{selectedAccount}</span></p>
+              </div>
+            <button className="delete-goal" onClick={() => deleteGoal(goal[0].id)}><RiDeleteBinLine /></button>
           </div>
             )
       }) 

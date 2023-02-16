@@ -1,0 +1,50 @@
+.goal-display {
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    justify-content: center;
+    width: 90%;
+    margin: auto;
+}
+
+.goal-header {
+    font-size: 70px;
+    padding: 10px;
+    width: 80%;
+    text-align: center;
+    margin: auto;
+}
+
+.description {
+    margin: auto;
+    font-size: 30px;
+}
+
+.progress-bar-rounded {
+    margin: auto;
+    width: 90%;
+}
+
+.progressBarRounded {
+    border-radius: 20px;
+    width: 80%;
+}
+
+.account-name {
+    font-size: 24px;
+    text-align: center;
+    padding: 5px;
+}
+
+.saving-progress {
+    text-align: center;
+    margin: 10px;
+}
+
+.delete-goal {
+    font-size: 30px;
+    background-color: white;
+    text-align: right;
+    padding: 10px;
+}
+
