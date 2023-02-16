@@ -78,7 +78,7 @@ const GoalsDisplay = (props) => {
   let displayedGoal;
   console.log(goal)
 
-  if(goal && bankData) {
+  if(goal && bankData.length) {
       displayedGoal = goal.map((goal) => {
           const selectedAccount = bankData.find(account => account.details.product === goal[0].account);
           console.log({selectedAccount})
@@ -104,7 +104,7 @@ const GoalsDisplay = (props) => {
                 <p><span className="bold">NOK{goal[0].amount}</span> / {balance}</p>
               </div>
               <div className="account-name">
-                <p>Account: <span className="bold">{selectedAccount}</span></p>
+                <p>Account: <span className="bold">{selectedAccount.details.product}</span></p>
               </div>
             <button className="delete-goal" onClick={() => deleteGoal(goal[0].id)}><RiDeleteBinLine /></button>
           </div>
