@@ -14,7 +14,7 @@ const Header = () => {
 
     useEffect(() => {
         async function main() {
-          const request = await fetch('http://localhost:3001/check-token-status', {
+          const request = await fetch(`${process.env.REACT_APP_API_URL}/check-token-status`, {
             method: 'GET',
             headers: {
               "token": await getAccessTokenSilently()

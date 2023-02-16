@@ -1,9 +1,7 @@
 import "../../styles/Nordigen/styles.css"
-import axios from 'axios';
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { NavBar } from "../NavBar";
 
 const GetToken = () => {
   const [status, setStatus] = useState(null);
@@ -32,7 +30,7 @@ const GetToken = () => {
     try {
 
 
-      const request = await fetch("http://localhost:3001/get-token", {
+      const request = await fetch(`${process.env.REACT_APP_API_URL}/get-token`, {
         method: 'GET',
         headers: {
           "token": await getAccessTokenSilently()
@@ -47,7 +45,7 @@ const GetToken = () => {
 
   const checkTokenStatus = async () => {
     try {
-      const request = await fetch("http://localhost:3001/check-token-status", {
+      const request = await fetch(`${process.env.REACT_APP_API_URL}/check-token-status`, {
         method: "GET",
         headers: {
           "token": await getAccessTokenSilently()

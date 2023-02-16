@@ -22,7 +22,7 @@ const GoalsDisplay = (props) => {
   const populateGoal = useCallback(async (id) => {
 
     try {
-      const res = await fetch(`http://localhost:3001/goals/${id}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/goals/${id}`, {
         method: 'GET', 
         headers: {
           token: await getAccessTokenSilently()
@@ -33,7 +33,7 @@ const GoalsDisplay = (props) => {
       setGoal([response])
       
 
-      const request = await fetch('http://localhost:3001/universal', {
+      const request = await fetch(`${process.env.REACT_APP_API_URL}/universal`, {
         headers: {
           token: await getAccessTokenSilently()
         }
@@ -60,7 +60,7 @@ const GoalsDisplay = (props) => {
 
   const deleteGoal = async (id) => {
     try {
-      const request = await fetch(`http://localhost:3001/goals/${id}`, {
+      const request = await fetch(`${process.env.REACT_APP_API_URL}/goals/${id}`, {
         method: 'DELETE', 
         headers: {
           token: await getAccessTokenSilently()

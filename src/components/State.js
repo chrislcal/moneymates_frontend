@@ -75,7 +75,7 @@ export const State = () => {
 
       try {
         const accessToken = await getAccessTokenSilently();
-        const domain = "dev-u5mawjni6mjjw103.us.auth0.com";
+        const domain = process.env.REACT_APP_AUTH0_DOMAIN;
         const user_id = user.sub;
   
         const { data: userData } = await axios.get(
@@ -90,7 +90,7 @@ export const State = () => {
         console.log("step1")
   
         await axios({
-          url: 'http://localhost:3001/save-user-data',
+          url: `${process.env.REACT_APP_API_URL}/save-user-data`,
           method: 'POST',
           data: {
             user_id: user_id,
@@ -106,7 +106,7 @@ export const State = () => {
         console.log("step2")
   
   
-        const request = await fetch('http://localhost:3001/check-token-status', {
+        const request = await fetch(`${process.env.REACT_APP_API_URL}/check-token-status`, {
           method: 'GET',
           headers: {
             "token": await getAccessTokenSilently()

@@ -8,11 +8,11 @@ import App from './App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Auth0Provider
-    domain="dev-u5mawjni6mjjw103.us.auth0.com"
-    clientId="yyPUBcQM8SR1PQ0x2CDveImLx4EVrZuH"
+    domain={process.env.REACT_APP_AUTH0_DOMAIN}
+    clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
     authorizationParams={{
       redirect_uri: window.location.origin,
-      audience: "https://dev-u5mawjni6mjjw103.us.auth0.com/api/v2/",
+      audience: `${process.env.REACT_APP_AUTH0_DOMAIN}/api/v2`,
       scope: "read:current_user openid: profile email nickname"
     }}
   >

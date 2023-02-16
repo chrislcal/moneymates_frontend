@@ -5,7 +5,9 @@ import { BiLogIn } from 'react-icons/bi'
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
 
-  return <button onClick={() => loginWithRedirect()} className="loginbtn"><span><BiLogIn style={{fontSize: "40px"}}/></span></button>;
+  return <button onClick={() => loginWithRedirect()} className="loginbtn">
+    <span><BiLogIn style={{fontSize: "40px"}}/></span>
+    </button>;
 };
 
 export default LoginButton;

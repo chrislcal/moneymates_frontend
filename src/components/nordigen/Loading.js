@@ -1,5 +1,4 @@
 import "../../styles/Nordigen/styles.css"
-import axios from 'axios';
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -17,7 +16,7 @@ const Loading = () => {
       try{
 
         const accessToken = await getAccessTokenSilently();
-        const request = await fetch("http://localhost:3001/save-agreement-id", {
+        const request = await fetch(`${process.env.REACT_APP_API_URL}/save-agreement-id`, {
           method: 'GET',
           headers: {
           "token": await getAccessTokenSilently()
@@ -39,7 +38,7 @@ const Loading = () => {
       if (agreement) {
         const fetchRequisition = async () => {
           const accessToken = await getAccessTokenSilently();
-          const request = await fetch("http://localhost:3001/save-requisition-id", {
+          const request = await fetch(`${process.env.REACT_APP_API_URL}/save-requisition-id`, {
             method: 'GET',
             headers: {
             "token": await getAccessTokenSilently()

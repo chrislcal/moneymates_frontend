@@ -13,7 +13,7 @@ const Initialization = (props) => {
       }
       try {
         const accessToken = await getAccessTokenSilently();
-        const domain = "dev-u5mawjni6mjjw103.us.auth0.com";
+        const domain = `${process.env.REACT_APP_AUTH0_DOMAIN}`;
         const user_id = user.sub;
   
         const { data: userData } = await axios.get(
@@ -26,7 +26,7 @@ const Initialization = (props) => {
         );
   
         await axios({
-          url: 'http://localhost:3001/save-user-data',
+          url: `${process.env.REACT_APP_API_URL}/save-user-data`,
           method: 'POST',
           data: {
             user_id: user_id,

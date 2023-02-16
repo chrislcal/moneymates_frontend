@@ -19,7 +19,7 @@ const Home = () => {
     }
     const saveAccounts = async() => {
       try {
-        const request = await fetch('http://localhost:3001/save-accounts', {
+        const request = await fetch(`${process.env.REACT_APP_API_URL}/save-accounts`, {
           method: 'GET', 
           headers: {
             token: await getAccessTokenSilently()
@@ -35,7 +35,7 @@ const Home = () => {
     
       const getDetails = async() => {
         try {
-          const request = await fetch('http://localhost:3001/details', {
+          const request = await fetch(`${process.env.REACT_APP_API_URL}/details`, {
             method: 'GET',
             headers: {
               token: await getAccessTokenSilently()
@@ -51,7 +51,7 @@ const Home = () => {
 
       const getBalances = async() => {
         try {
-          const request = await fetch('http://localhost:3001/balances', {
+          const request = await fetch(`${process.env.REACT_APP_API_URL}/balances`, {
             method: 'GET',
             headers: {
               token: await getAccessTokenSilently()
@@ -68,7 +68,7 @@ const Home = () => {
 
       const getGoals = async() => {
         try {
-            const request = await fetch('http://localhost:3001/get-goals', {
+            const request = await fetch(`${process.env.REACT_APP_API_URL}/get-goals`, {
                 method: 'GET', 
                 headers: {
                     token: await getAccessTokenSilently()

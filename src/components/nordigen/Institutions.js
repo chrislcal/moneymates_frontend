@@ -7,7 +7,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 const Institutions = () => {
   const [institutions, setInstitutions] = useState(null);
   const [selectedBank, setSelectedBank] = useState(null);
-  const [accessToken, setAccessToken] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const history = useHistory();
 
@@ -17,7 +16,7 @@ const Institutions = () => {
     const getInstitutions = async () => {
       try {
         const accessToken = await getAccessTokenSilently();
-        const domain = "dev-u5mawjni6mjjw103.us.auth0.com";
+        const domain = `${process.env.REACT_APP_AUTH0_DOMAIN}`;
         const user_id = user.sub;
 
         const { data: userData } = await axios.get(`https://${domain}/api/v2/users/${user_id}`, {
@@ -26,7 +25,7 @@ const Institutions = () => {
           },
         });
 
-        const request = await fetch("http://localhost:3001/institutions", {
+        const request = await fetch(`${process.env.REACT_APP_API_URL}/institutions`, {
           headers: {
             token: await getAccessTokenSilently(),
           },
@@ -58,7 +57,7 @@ const Institutions = () => {
 
   const handleInstitutionClick = async (id) => {
     setSelectedBank(id);
-    const request = await fetch("http://localhost:3001/save-institution-id", {
+    const request = await fetch(`${process.env.REACT_APP_API_URL}/save-institution-id`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

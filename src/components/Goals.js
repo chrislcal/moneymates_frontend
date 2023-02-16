@@ -8,17 +8,16 @@ import { BsPlusLg } from "react-icons/bs";
 import '../styles/goals.css';
 
 function Goals() {
-    const {user, getAccessTokenSilently} = useAuth0();
+    const { getAccessTokenSilently} = useAuth0();
 
     const [goals, setGoals] = useState([]);
     const [bankData, setBankData] = useState([]);
-    const [selectedGoal, setSelectedGoal] = useState('');
 
     useEffect(() => {
         console.log('useffect ran')
         const getBalances = async() => {
             try {
-                const request = await fetch('http://localhost:3001/universal', {
+                const request = await fetch(`${process.env.REACT_APP_API_URL}/universal`, {
                     method: 'GET',
                     headers: {
                         token: await getAccessTokenSilently()
@@ -37,7 +36,7 @@ function Goals() {
 
         const getGoals = async() => {
             try {
-                const request = await fetch('http://localhost:3001/get-goals', {
+                const request = await fetch(`${process.env.REACT_APP_API_URL}/get-goals`, {
                     method: 'GET', 
                     headers: {
                         token: await getAccessTokenSilently()

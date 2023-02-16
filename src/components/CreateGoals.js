@@ -19,7 +19,7 @@ const CreateGoals = () => {
   useEffect(() => {
     const getAccountDetails = async() => {
       try {
-        const request = await fetch('http://localhost:3001/details', {
+        const request = await fetch(`${process.env.REACT_APP_API_URL}/details`, {
           headers: {
             token: await getAccessTokenSilently()
           }
@@ -50,7 +50,7 @@ const CreateGoals = () => {
 
   async function handleClick() {
     try {
-      const request = await fetch('http://localhost:3001/save-goal', {
+      const request = await fetch(`${process.env.REACT_APP_API_URL}/save-goal`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
